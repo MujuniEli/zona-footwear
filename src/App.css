@@ -68,9 +68,17 @@ ul{
 }
 
 .card button{
+  width: 6em;
   background-color: #D5D8DC;
-  padding: 0 15px 0 15px;
+  padding: 10px 15px 10px 15px;
   border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.card button:hover{
+  color: white;
+  background-color: #424949;
 }
 
 .card_description{
