@@ -3,15 +3,15 @@ import Card from '../components/Card'
 import {data} from '../library/lib'
 
 
-function Home() {
-    console.log(data);
+function Store() {
+    //console.log(data);
     return (
-        <div className="home">
+        <div className="store">
             {data &&
                 data.map(lib =>(
                     <div key={lib.id}>
 
-                        <Card productName={lib.product} img={lib.image} price={lib.price} id={lib.id}/>
+                        <Card data={lib}/>
                     </div>
                 ))
             }
@@ -19,4 +19,4 @@ function Home() {
     )
 }
 
-export default Home
+export default Store

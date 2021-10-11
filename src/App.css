@@ -1,31 +1,33 @@
 
-body{
-  background-color: #ECF0F1;
+
+body {
+  background-color: #ecf0f1;
+  /* min-height: 100%; */
+  
 }
 
-.nav{
+.nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 75px;
-  background-color: #F2F3F4;
-  border-bottom: 1px solid #D5D8DC;
+  background-color: #f2f3f4;
+  border-bottom: 1px solid #d5d8dc;
   position: fixed;
   width: 100%;
   top: 0;
-
 }
 
-.logo a{
+.logo a {
   color: black;
   text-decoration: none;
 }
 
-.leftItem{
+.leftItem {
   display: flex;
 }
 
-.logo{
+.logo {
   flex: none;
   font-size: large;
   font-weight: bold;
@@ -33,18 +35,35 @@ body{
   padding-left: 5%;
 }
 
-ul{
+ul {
   display: flex;
 }
 
-.icons{
+.icons {
   display: flex;
   justify-content: flex-end;
 }
 
-.icon{
+.icons li{
+  list-style: none;
+}
+
+.icon {
   padding: 15px;
   cursor: pointer;
+}
+
+.header{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 10em;
+}
+
+.headertxt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .menu li {
@@ -54,40 +73,79 @@ ul{
   flex: none;
 }
 
-.home{
- 
+.store {
   padding-left: 5em;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.card{
+.card {
   margin-top: 100px;
- 
+
   /* border: 1px solid #D5D8DC; */
 }
 
-.card button{
+.card button {
   width: 6em;
-  background-color: #D5D8DC;
+  background-color: #d5d8dc;
   padding: 10px 15px 10px 15px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
 }
 
-.card button:hover{
+.card button:hover {
   color: white;
   background-color: #424949;
 }
 
-.card_description{
+.card_description {
   padding: 0 30px 0 30px;
   display: flex;
   flex-direction: column;
 }
 
-.buyBtn{
+.buyBtn {
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
+}
+
+.signin {
+  margin-left: 30em;
+  margin-top: 10em;
+}
+
+.inputtxt {
+  display: block;
+  background-color: #ecf0f1;
+  height: 2.5rem;
+  width: 20rem;
+  border: none;
+  border-bottom: .125rem solid #9b9b9b;
+}
+
+.signinBtn {
+  color: white;
+  background-color: #000;
+  border: none;
+  padding: 15px 30px;
+  margin-right: 5em;
+  font-size: 1.rem;
+  font-weight: 600;
+}
+
+.spanone a{
+  text-decoration: none;
+  color: #000;
+}
+
+.footer{
+  height: 8vh;
+  color: #999999;
+  background-color: black;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20em;
 }
