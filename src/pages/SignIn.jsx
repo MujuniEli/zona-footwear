@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import {loginDetails} from '../library/lib'
 
+
 function SignIn() {
     const navigate = useNavigate();
     
@@ -12,9 +13,9 @@ function SignIn() {
     const onSubmitHandler = e => {
         e.preventDefault()
 
-        if((loginDetails.email === email) && (loginDetails.password === password)){
+        if((loginDetails.email.match(email)) && (loginDetails.password.match(password))){
             localStorage.setItem("userEmail", email);
-            navigate("/admin");
+            navigate("/store");
         }else {
             setError('**use your proper Sign-in details ie email & password**')
         }

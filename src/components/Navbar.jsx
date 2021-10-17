@@ -10,7 +10,7 @@ function Navbar() {
   const email = localStorage.getItem("userEmail")
   const signOut = () =>{
     localStorage.removeItem('userEmail')
-    navigate("/sign-in")
+    navigate("/store")
   }
   
   const navStyle = {
@@ -21,7 +21,7 @@ function Navbar() {
     <div className="nav">
       <div className="leftItem">
         <div className="logo">
-          <a href="https://zona-footwear.netlify.app/">ZONA FOOTWEAR</a>
+          <p>ZONA FOOTWEAR</p>
         </div>
         <div className="menu">
           <ul>
@@ -38,9 +38,11 @@ function Navbar() {
         <ul>
           {email ? email : " "} &nbsp;
           {email ? (
-            <button style={navStyle} onClick={signOut}>
-              <li>Sign Out</li>
-            </button>
+            // <Link style={navStyle} to="/store">
+              <button className="signotBtn" style={navStyle} onClick={signOut}>
+                <li>Sign Out</li>
+              </button>
+            // {/* </Link> */}
           ) : (
             <Link style={navStyle} to="/sign-in">
               <li>Sign In</li>

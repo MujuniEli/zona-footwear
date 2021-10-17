@@ -71,8 +71,7 @@ export const data = [
 ]
 
 export let loginDetails = {
-  id: 1,
-  email: "admin@zona.com",
-  password: "admin0123",
+  email: "eli@zona.com",
+  password: "012345"
 };
 
