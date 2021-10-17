@@ -2,9 +2,17 @@ import React from "react";
 import ShoppingCartSharpIcon from "@mui/icons-material/ShoppingCartSharp";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+
 
 function Navbar() {
-
+  const navigate = useNavigate();
+  const email = localStorage.getItem("userEmail")
+  const signOut = () =>{
+    localStorage.removeItem('userEmail')
+    navigate("/sign-in")
+  }
+  
   const navStyle = {
     textDecoration: 'none'
   };
@@ -28,9 +36,16 @@ function Navbar() {
 
       <div className="icons rightItem">
         <ul>
-          <Link style={navStyle} to="/sign-in">
-            <li>Sign In</li>
-          </Link>
+          {email ? email : " "} &nbsp;
+          {email ? (
+            <button style={navStyle} onClick={signOut}>
+              <li>Sign Out</li>
+            </button>
+          ) : (
+            <Link style={navStyle} to="/sign-in">
+              <li>Sign In</li>
+            </Link>
+          )}
         </ul>
         <span className="icon">
           <SearchIcon />

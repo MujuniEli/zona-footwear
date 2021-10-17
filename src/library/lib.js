@@ -75,3 +75,4 @@ export let loginDetails = {
   email: "admin@zona.com",
   password: "admin0123",
 };
+

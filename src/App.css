@@ -139,6 +139,14 @@ ul {
   color: #000;
 }
 
+.admin{
+  margin-top: 7%;
+}
+
+.sidebar ul{
+  list-style: none;
+}
+
 .footer{
   height: 8vh;
   color: #999999;
