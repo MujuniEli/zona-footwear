@@ -7,13 +7,16 @@ import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
-  const email = localStorage.getItem("userEmail")
+  const isAuth = localStorage.getItem("auth");
+  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+  const email = "Welcome " + userDetails.username;
   const signOut = () =>{
-    localStorage.removeItem('userEmail')
+    localStorage.removeItem('auth')
     navigate("/store")
   }
   
   const navStyle = {
+    color:'black',
     textDecoration: 'none'
   };
 
@@ -21,7 +24,9 @@ function Navbar() {
     <div className="nav">
       <div className="leftItem">
         <div className="logo">
-          <p>ZONA FOOTWEAR</p>
+          <Link style={navStyle} to="/">
+            <span>ZONA FOOTWEAR</span>
+          </Link>
         </div>
         <div className="menu">
           <ul>
@@ -35,26 +40,36 @@ function Navbar() {
       </div>
 
       <div className="icons rightItem">
-        <ul>
-          {email ? email : " "} &nbsp;
-          {email ? (
-            // <Link style={navStyle} to="/store">
-              <button className="signotBtn" style={navStyle} onClick={signOut}>
-                <li>Sign Out</li>
-              </button>
-            // {/* </Link> */}
-          ) : (
-            <Link style={navStyle} to="/sign-in">
-              <li>Sign In</li>
-            </Link>
-          )}
-        </ul>
         <span className="icon">
           <SearchIcon />
         </span>
         <span className="icon">
           <ShoppingCartSharpIcon />
         </span>
+        <ul>
+          {isAuth ? email : " "} &nbsp;
+          {isAuth ? (
+            // <Link style={navStyle} to="/store">
+            <button className="signotBtn" style={navStyle} onClick={signOut}>
+              <li>Sign Out</li>
+            </button>
+          ) : (
+            // {/* </Link> */}
+            <Link style={navStyle} to="/sign-in">
+              <li style={{ marginRight: "5em" }}>Sign In</li>
+            </Link>
+          )}
+        </ul>
+        {isAuth ? (
+          <img
+            src={userDetails.avatar}
+            style={{ width: "50px", borderRadius: "50px" }}
+            alt={userDetails.firstName}
+          />
+        ) : (
+          " "
+        )}{" "}
+        &nbsp;
       </div>
     </div>
   );

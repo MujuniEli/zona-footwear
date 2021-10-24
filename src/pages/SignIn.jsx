@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
-import {loginDetails} from '../library/lib'
-
+ 
 
 function SignIn() {
     const navigate = useNavigate();
@@ -12,12 +11,16 @@ function SignIn() {
           
     const onSubmitHandler = e => {
         e.preventDefault()
+        const userDetails = JSON.parse(localStorage.getItem("userDetails"));
 
-        if((loginDetails.email.match(email)) && (loginDetails.password.match(password))){
-            localStorage.setItem("userEmail", email);
-            navigate("/store");
-        }else {
-            setError('**use your proper Sign-in details ie email & password**')
+        if (
+          userDetails.email.match(email) &&
+          userDetails.password.match(password)
+        ) {
+          localStorage.setItem("auth", true) 
+          navigate("/store");
+        } else {
+          setError("**use your proper Sign-in details ie email & password**");
         }
     }
     return (
@@ -28,7 +31,7 @@ function SignIn() {
           {error !== "" ? <div className="error">{error}</div> : ""}
           <br />
           <label>Email*</label>
-          <input 
+          <input
             className="inputtxt"
             type="email"
             onChange={(e) => setEmail(e.target.value)}
@@ -47,9 +50,7 @@ function SignIn() {
           <br />
           <input className="signinBtn" type="submit" value="Sign In" />
           <span className="spanone">
-            <a href="https://zona-footwear.netlify.app/">
-              Forgot Your Sign-in Details?
-            </a>
+            <a href="https://zona-footwear.netlify.app/">Forgot Password?</a> or <a href="/sign-up">Sign Up</a>
           </span>
         </form>
       </div>
