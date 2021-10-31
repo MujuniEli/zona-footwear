@@ -40,7 +40,7 @@ function Navbar() {
   };
 
   return (
-    <div className="nav">
+    <div className="nav" style={{ zIndex: '200' }}>
       <div className="leftItem">
         <div className="logo">
           <Link style={navStyle} to="/">

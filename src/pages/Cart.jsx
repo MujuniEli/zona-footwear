@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
-import CartCard from '../components/CartCard'
+import Card from '../components/Card'
 import { CartContext } from "../context/CartContext";
 
 
 function Cart() {
     const { cartData } = useContext(CartContext);
     return (
-        <div className="store">
+        <div className="store" style={{ paddingTop: '85px' }}>
             {cartData &&
                 cartData.map(product =>(
                     <div key={product.id}>
-                        <CartCard data={product}/>
+                        <Card data={product}/>
                     </div>
                 ))
             }

@@ -80,20 +80,6 @@ ul {
   /* border: 1px solid #D5D8DC; */
 }
 
-.card button {
-  width: 6em;
-  background-color: #d5d8dc;
-  padding: 10px 15px 10px 15px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-}
-
-.card button:hover {
-  color: white;
-  background-color: #424949;
-}
-
 .card_description {
   padding: 0 30px 0 30px;
   display: flex;

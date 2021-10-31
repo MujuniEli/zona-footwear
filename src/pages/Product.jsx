@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Button from '@mui/material/Button';
 import { Grid, Typography } from '@mui/material'
 import {data} from "../library/lib"
 import { CartContext } from '../context/CartContext'
 
 function Product() {
-  const { addToCart } = useContext(CartContext)
+  const { cartData, addToCart, removeFromCart } = useContext(CartContext)
     const { productID } = useParams()
     const [dataloaded, setdataloaded] = useState(false)
     const [productData, setProductData] = useState({});
@@ -20,15 +21,25 @@ function Product() {
       setdataloaded(true);
     }, [productID]);
 
+    const checkCart = (prodId) => {
+      return cartData.some(function(prod) {
+        return prod.id === prodId;
+      });
+    }
+
     const addProduct = () => {
       addToCart(productData)
     }
 
+    const deleteProduct = () => {
+      removeFromCart(productData);
+    };
+
   return (
-    <Grid item xs={12} sm={12} md={12} lg={12}>
+    <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingTop: '75px' }}>
       
       {dataloaded ? (
-        <Grid container style={{ marginTop: "10px" }}>
+        <Grid container style={{ marginTop: "10px", paddingTop: '10px' }}>
           <Grid item xs={12} sm={12} md={5} lg={4}>
             <img
               src={productData.image}
@@ -36,8 +47,10 @@ function Product() {
               alt={productData.product}
             />
           </Grid>
-          <Grid item xs={12} sm={12} md={7} lg={8} align="left">
-            <h3>{productData.product}</h3>
+          <Grid item xs={12} sm={12} md={7} lg={8} style={{ paddingLeft: '10px' }} align="left">
+            <Typography variant="h4">
+              {productData.product}
+            </Typography>
             <Typography variant="h6">
               <strong>Price: </strong>
               {productData.price}
@@ -50,7 +63,11 @@ function Product() {
               <strong>Rating: </strong>
               {productData.star}/5
             </Typography>
-            <button onClick={addProduct}>Add to Cart</button>
+            {checkCart(productData.id)?
+              <Button variant="outlined" size="medium" color="error" onClick={deleteProduct}>Remove</Button>
+            :            
+              <Button variant="outlined" size="medium" color="success" onClick={addProduct}>Add to Cart</Button>
+            }
           </Grid>
         </Grid>
       ) : (
