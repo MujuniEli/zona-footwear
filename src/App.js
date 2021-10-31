@@ -1,8 +1,10 @@
 import './App.css';
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
+import CartContextProvider from './context/CartContext'
 import Landing from './pages/Landing'
 import Navbar from './components/Navbar';
 import Store from './pages/Store'
+import Cart from './pages/Cart'
 import Footer from './components/Footer'
 import SignIn from './pages/SignIn';
 import SignUp from "./pages/SignUp";
@@ -12,6 +14,7 @@ function App() {
   const routes = [
     { path: "/", element: <Landing /> },
     { path: "/store", element: <Store /> },
+    { path: "/cart", element: <Cart /> },
     { path: "/admin", element: <Admin /> },
     { path: "/product/:productID", element: <Product /> },
     { path: "/sign-in", element: <SignIn /> },
@@ -24,16 +27,11 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <Switch> */}
+        <CartContextProvider>
           <Navbar />
-            <Routing/>
-          {/* <Route path="/" exact component={Landing} />
-          <Route  path="/Store" component={Store} />
-          <Route exact path="/admin" component={Admin} />
-          <Route exact path="/products/:productID" component={Product} />
-          <Route path="/SignIn" component={SignIn} /> */}
+          <Routing/>
+          </CartContextProvider>
           <Footer />
-        {/* </Switch> */}
       </Router>
     </div>
   );

@@ -105,6 +105,23 @@ ul {
   justify-content: space-between;
 }
 
+#rmBtn {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f2f3f4;
+  color: red;
+  border: 1px solid red;
+}
+
+#rmBtn:hover{
+  opacity: 0.7;
+}
+
+#rmBtn:focus{
+  background-color: red;
+  color: white;
+}
+
 .signin {
   margin-left: 30em;
   margin-top: 10em;

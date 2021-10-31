@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Grid, Typography } from '@mui/material'
 import {data} from "../library/lib"
+import { CartContext } from '../context/CartContext'
 
 function Product() {
+  const { addToCart } = useContext(CartContext)
     const { productID } = useParams()
     const [dataloaded, setdataloaded] = useState(false)
     const [productData, setProductData] = useState({});
@@ -17,6 +19,10 @@ function Product() {
       );
       setdataloaded(true);
     }, [productID]);
+
+    const addProduct = () => {
+      addToCart(productData)
+    }
 
   return (
     <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -44,7 +50,7 @@ function Product() {
               <strong>Rating: </strong>
               {productData.star}/5
             </Typography>
-            <button>Add to Cart</button>
+            <button onClick={addProduct}>Add to Cart</button>
           </Grid>
         </Grid>
       ) : (

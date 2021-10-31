@@ -3,9 +3,9 @@ import { CartContext } from "../context/CartContext";
 
 
 function Card({data}) {
-    const { addToCart } = useContext(CartContext);
-    const addProduct = () => {
-      addToCart(data);
+    const { removeFromCart } = useContext(CartContext);
+    const deleteProduct = () => {
+      removeFromCart(data);
     };
   return (
     <div className="card">
@@ -18,9 +18,9 @@ function Card({data}) {
       <div className="card_description">
         <h4>{data.product}</h4>
 
-        <div className="buyBtn">
+        <div>
           <span>Shs:{data.price}</span>
-          <button onClick={addProduct}>Add to Cart</button>
+          <button Id="rmBtn" onClick={deleteProduct}>Remove</button>
         </div>
       </div>
     </div>

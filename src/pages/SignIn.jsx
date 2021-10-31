@@ -17,8 +17,12 @@ function SignIn() {
           userDetails.email.match(email) &&
           userDetails.password.match(password)
         ) {
-          localStorage.setItem("auth", true) 
-          navigate("/store");
+          if(email===''||password===''){
+            setError('Error: Empty field detected!')
+          }else {
+            localStorage.setItem("auth", true) 
+            navigate("/store");
+          }
         } else {
           setError("**use your proper Sign-in details ie email & password**");
         }
@@ -28,7 +32,7 @@ function SignIn() {
         <form action="" onSubmit={onSubmitHandler}>
           <h3>Already Registered?</h3>
           <p>If you have an account, sign in with your email address.</p>
-          {error !== "" ? <div className="error">{error}</div> : ""}
+          {error !== "" ? <p className="error" style={{ border: '1px red solid', color: 'red', borderRadius: '8px', padding: '10px 0px', width: '35%' }} align='center'>{error}</p> : ""}
           <br />
           <label>Email*</label>
           <input

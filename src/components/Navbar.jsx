@@ -1,11 +1,26 @@
-import React from "react";
-import ShoppingCartSharpIcon from "@mui/icons-material/ShoppingCartSharp";
+import React, { useContext } from "react";
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
+import { CartContext } from '../context/CartContext'
 
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}));
 
 function Navbar() {
+
+  const { cartData } = useContext(CartContext)
+
   const navigate = useNavigate();
   const isAuth = localStorage.getItem("auth");
   const userDetails = JSON.parse(localStorage.getItem("userDetails"));
@@ -13,6 +28,10 @@ function Navbar() {
   const signOut = () =>{
     localStorage.removeItem('auth')
     navigate("/store")
+  }
+
+  const goToCart = () => {
+    navigate("/cart")
   }
   
   const navStyle = {
@@ -43,9 +62,14 @@ function Navbar() {
         <span className="icon">
           <SearchIcon />
         </span>
-        <span className="icon">
+        {/* <span className="icon">
           <ShoppingCartSharpIcon />
-        </span>
+        </span> */}
+        <IconButton onClick={goToCart}>
+          <StyledBadge badgeContent={cartData.length} color="secondary">
+            <ShoppingCartIcon />
+          </StyledBadge>
+        </IconButton>
         <ul>
           {isAuth ? email : " "} &nbsp;
           {isAuth ? (
@@ -68,7 +92,7 @@ function Navbar() {
           />
         ) : (
           " "
-        )}{" "}
+        )}
         &nbsp;
       </div>
     </div>
