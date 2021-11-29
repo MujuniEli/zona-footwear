@@ -19,12 +19,12 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 function Navbar() {
 
-  const { cartData } = useContext(CartContext)
+  const { cartData } = useContext(CartContext);
 
   const navigate = useNavigate();
   const isAuth = localStorage.getItem("auth");
   const userDetails = JSON.parse(localStorage.getItem("userDetails"));
-  const email = "Welcome " + userDetails.username;
+  const email = "Welcome " + userDetails?.username;
   const signOut = () =>{
     localStorage.removeItem('auth')
     navigate("/store")

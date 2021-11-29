@@ -16,6 +16,7 @@ function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [cPassword, setCPassword] = useState("");
+    // eslint-disable-next-line
     const [error, setError] = useState("");
 
     const changeAvatar = async (e) => {
